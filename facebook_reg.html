@@ -99,12 +99,15 @@
         isValid = false;
       }
 
-      if (password.trim() === "") {
+       if (password.trim() === "") {
         passwordError.textContent = "Please enter your password";
         isValid = false;
       } else if (password.length < 6) {
         passwordError.textContent = "Password must be at least 6 characters long";
         isValid = false;
+      } else if(!isValidPass(password)){
+         passwordError.textContent = "Password must contain atleast 1 Uppercase, 1 lowercase, 1 digit, 1 specialcharacter";
+         isValid = false;
       }
       
       if (isValid) {
@@ -116,6 +119,10 @@
     function isValidEmail(email) {
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
+    }
+    function isValidPass(password){
+      var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
+      return passRegex.test(password);
     }
   </script>
 </body>

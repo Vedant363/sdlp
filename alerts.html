@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Tasks</title>
+</head>
+<body>
+
+<span id="output"></span><br>
+<span id="output1"></span><br>
+<span id="output2"></span><br>
+<span id="output3"></span>
+
+<script>
+  let a = document.getElementById('output');
+  let a1 = document.getElementById('output1');
+  let a2 = document.getElementById('output2');
+  let a3 = document.getElementById('output3');
+  // Task 2: Put an alert
+  a.textContent = "Hello World!"
+  // alert("Hello, world!");
+
+  // Task 3: Calculate the average number of weeks in human lifetime
+  var averageLifespanYears = 80; // Assuming the average lifespan is 80 years
+  var weeksInYear = 52;
+  var averageWeeksInLifetime = averageLifespanYears * weeksInYear;
+  let str = "Average weeks in a human lifetime:"+averageWeeksInLifetime
+  a1.textContent = str
+  // alert(str);
+
+  // Task 4: Create variables to store a string
+  var greeting = "Hello, ";
+  var name = "John";
+  var message = greeting + name;
+  a2.textContent = message
+  // alert(message);
+
+  // Task 5: Program that tells the time of the day (morning, afternoon, night)
+  var now = new Date();
+  var hour = now.getHours();
+  var timeOfDay;
+
+  if (hour >= 5 && hour < 12) {
+    timeOfDay = "morning";
+  } else if (hour >= 12 && hour < 18) {
+    timeOfDay = "afternoon";
+  } else {
+    timeOfDay = "night";
+  }
+  let str2 = "It's, "+timeOfDay
+  a3.textContent = str2
+  // alert(str2);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make sure the body takes at least the full height of the viewport */
+}
+
+header {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1; /* Make the main content area grow to fill available space */
+}
+
+.video-container {
+    margin-bottom: 20px; /* Adjust the gap size as needed */
+    margin-right: 10px;
+}
+
+.video-info {
+    margin-top: 10px;
+}
+
+.video-info h2 {
+    margin: 0;
+}
+
+.video-info p {
+    margin: 5px 0;
+}
+
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* Push the footer to the bottom */
+}

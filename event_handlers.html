@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+
+    <div id="myElement" style="height: 100px; width: 100px; background-color: lightblue;">Hover Over Me</div>
+
+    <form id="myForm">
+        <input type="text" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <input id="myInput" type="text" />
+
+    <div id="myDiv" style="height: 200px; width: 200px; border: 1px solid black; overflow-y: scroll;">
+        Scrollable content
+        <div style="height: 500px;"></div> 
+    </div>
+
+    <script>
+        function handleClick(event) {
+            alert("Button clicked!");
+            // Additional logic here
+        }
+
+        function handleMouseOver(event) {
+            alert("Mouse over the element!");
+            // Additional logic here
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevents the default form submission
+            alert("Form submitted!");
+            // Additional logic here
+        }
+
+        function handleKeyPress(event) {
+            let str = "Key pressed:"+event.key
+            alert(str);
+            // Additional logic here
+        }
+
+        function handleScroll(event) {
+            alert("Page scrolled!");
+            // Additional logic here
+        }
+
+        document.getElementById("myButton").addEventListener("click", handleClick);
+        document.getElementById("myElement").addEventListener("mouseover", handleMouseOver);
+        document.getElementById("myForm").addEventListener("submit", handleSubmit);
+        document.getElementById("myInput").addEventListener("keypress", handleKeyPress);
+        document.getElementById("myDiv").addEventListener("scroll", handleScroll);
+    </script>
+</body>
+</html>

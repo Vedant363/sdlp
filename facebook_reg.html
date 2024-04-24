@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4267B2;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #405D9D;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Facebook Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required>
+      <span id="fullNameError" class="error"></span>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
+      <span id="emailError" class="error"></span>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <span id="passwordError" class="error"></span>
+
+      <input type="submit" value="Register">
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var fullName = document.getElementById('fullName').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var fullNameError = document.getElementById('fullNameError');
+      var emailError = document.getElementById('emailError');
+      var passwordError = document.getElementById('passwordError');
+      var isValid = true;
+
+      fullNameError.textContent = "";
+      emailError.textContent = "";
+      passwordError.textContent = "";
+
+      if (fullName.trim() === "") {
+        fullNameError.textContent = "Please enter your full name";
+        isValid = false;
+      }
+
+      if (email.trim() === "") {
+        emailError.textContent = "Please enter your email";
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        emailError.textContent = "Please enter a valid email address";
+        isValid = false;
+      }
+
+      if (password.trim() === "") {
+        passwordError.textContent = "Please enter your password";
+        isValid = false;
+      } else if (password.length < 6) {
+        passwordError.textContent = "Password must be at least 6 characters long";
+        isValid = false;
+      }
+      
+      if (isValid) {
+        alert("Form submitted successfully!");
+      }
+      return isValid;
+    }
+
+    function isValidEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  </script>
+</body>
+</html>

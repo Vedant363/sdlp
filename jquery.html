@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jQuery Input Field Operations</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#calculateButton').click(function() {
+        var value1 = $('#input1').val();
+        var value2 = $('#input2').val();
+
+        var num1 = parseFloat(value1);
+        var num2 = parseFloat(value2);
+
+        if (!isNaN(num1) && !isNaN(num2)) {
+            var sum = num1 + num2;
+            var difference = num1 - num2;
+            var product = num1 * num2;
+            var quotient = num1 / num2;
+
+            $('#sumResult').text("Sum: " + sum);
+            $('#differenceResult').text("Difference: " + difference);
+            $('#productResult').text("Product: " + product);
+            $('#quotientResult').text("Quotient: " + quotient);
+        } else {
+            alert("Please enter valid numbers");
+        }
+    });
+});
+</script>
+</head>
+<body>
+
+<input type="text" id="input1" placeholder="Enter a number">
+<input type="text" id="input2" placeholder="Enter another number">
+<button id="calculateButton">Calculate</button>
+
+<div id="results">
+    <p id="sumResult"></p>
+    <p id="differenceResult"></p>
+    <p id="productResult"></p>
+    <p id="quotientResult"></p>
+</div>
+
+</body>
+</html>

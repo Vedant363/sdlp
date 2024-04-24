@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Popup</title>
+    <style>
+        /* Styling for the notification popup */
+        .popup {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f8d7da; /* Red background color */
+            color: #721c24; /* Dark red text color */
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb; /* Dark red border color */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            display: none; /* Initially hidden */
+            z-index: 9999; /* Ensure it appears above other content */
+        }
+
+        /* Styling for the close button */
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup" id="notification">
+        <span class="close" onclick="closePopup()">&times;</span> <!-- Close button -->
+        <p>This is a notification popup!</p>
+    </div>
+
+    <button onclick="showPopup()">Show Notification</button>
+
+    <script>
+        // Function to show the popup
+        function showPopup() {
+            var popup = document.getElementById('notification');
+            popup.style.display = 'block'; // Display the popup
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            var popup = document.getElementById('notification');
+            popup.style.display = 'none'; // Hide the popup
+        }
+    </script>
+</body>
+</html>

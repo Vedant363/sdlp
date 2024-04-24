@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <span id="usernameError" class="error"></span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <div id="login" style="display: none;">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div>
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername">
+            </div>
+            <div>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="welcome" style="display: none;">
+        <h2>Welcome, <span id="displayName"></span>!</h2>
+    </div>
+
+    <script>
+        // Validation function
+        function validateForm() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            let isValid = true;
+
+            // Validate username
+            if (username === '') {
+                document.getElementById('usernameError').innerText = 'Username is required';
+                isValid = false;
+            } else {
+                document.getElementById('usernameError').innerText = '';
+            }
+
+            // Validate password
+            if (password === '') {
+                document.getElementById('passwordError').innerText = 'Password is required';
+                isValid = false;
+            } else if (password.length < 8) {
+                document.getElementById('passwordError').innerText = 'Password must be at least 8 characters long';
+                isValid = false;
+            } else if (!/(?=.*[A-Z])(?=.*[0-9])(?=.*[$#&@])/.test(password)) {
+                document.getElementById('passwordError').innerText = 'Password must contain at least one uppercase letter, one number, and one special character (#$&@)';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').innerText = '';
+            }
+            return isValid;
+        }
+
+        // Sign Up form submission
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (validateForm()) {
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value.trim();
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                document.getElementById('signupForm').reset();
+                document.getElementById('login').style.display = 'block';
+            }
+        });
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const loginUsername = document.getElementById('loginUsername').value.trim();
+            const loginPassword = document.getElementById('loginPassword').value.trim();
+            const savedUsername = localStorage.getItem('username');
+            const savedPassword = localStorage.getItem('password');
+            if (loginUsername === savedUsername && loginPassword === savedPassword) {
+                document.getElementById('welcome').style.display = 'block';
+                document.getElementById('displayName').innerText = savedUsername;
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+    </script>
+</body>
+
+</html>
